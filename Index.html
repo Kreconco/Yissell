@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mi Princesa Hermosa</title>
+<style>
+  body {
+    margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fce4ec; overflow-x: hidden;
+  }
+  #welcome-screen {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: #ff4081; color: white; font-size: 2.5rem; font-weight: bold;
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999; overflow: hidden;
+  }
+
+  /* Animación tipo máquina de escribir para texto de bienvenida */
+  #welcome-text {
+    font-family: cursive;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid #fff;
+    width: 38ch;
+    animation: typing 8s steps(38) forwards, blink .75s step-end infinite alternate;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 38ch }
+  }
+  @keyframes blink {
+    50% { border-color: transparent }
+  }
+
+  .heart {
+    position: absolute; color: white; font-size: 24px;
+    animation-name: floatUp; animation-timing-function: ease-out; animation-iteration-count: 1;
+    opacity: 0.8;
+  }
+  @keyframes floatUp {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    100% { transform: translate(var(--x), var(--y)) scale(2); opacity: 0; }
+  }
+  #main-content {
+    display: none; padding: 20px; max-width: 900px; margin: 0 auto;
+  }
+  h1 {
+    text-align: center; color: #880e4f; margin-bottom: 15px; font-weight: 900; font-family: cursive;
+  }
+
+  /* Carrusel horizontal con scroll automático */
+  #carousel {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    gap: 10px;
+    border-radius: 15px;
+    background-color: #f8bbd0;
+    padding: 10px;
+    max-width: 100%;
+    height: 250px;
+    margin-bottom: 30px;
+  }
+  #carousel img {
+    height: 100%;
+    border-radius: 15px;
+    flex-shrink: 0;
+    object-fit: contain;
+    user-select: none;
+  }
+
+  .btn-container {
+    text-align: center; margin-bottom: 40px;
+  }
+  button {
+    background-color: #ad1457; color: white; border: none;
+    padding: 12px 25px; margin: 10px; border-radius: 25px; font-size: 18px;
+    cursor: pointer; box-shadow: 0 4px 8px rgba(173,20,87,0.4);
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #d81b60;
+  }
+  .section {
+    display: none; text-align: center; background: #fce4ec;
+    padding: 20px; border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(173,20,87,0.2); margin-bottom: 40px;
+    max-width: 600px; margin-left: auto; margin-right: auto;
+  }
+  .section img.carta-img {
+    margin-top: 20px; max-width: 100%; border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(173,20,87,0.4);
+  }
+  .welcome-message {
+    background: #ad1457; padding: 25px 15px; border-radius: 20px; margin-bottom: 30px;
+    box-shadow: 0 6px 12px rgba(173,20,87,0.6); color: #fce4ec;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .welcome-message h2 {
+    margin: 0 0 10px 0; font-weight: 800; font-family: cursive;
+  }
+  .welcome-message p {
+    margin: 5px 0; font-size: 18px;
+  }
+  #countdown {
+    background: #880e4f; padding: 20px; border-radius: 20px; color: white;
+    text-align: center; font-weight: 700; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin-bottom: 40px;
+  }
+</style>
+</head>
+<body>
+
+  <div id="welcome-screen">
+    <div id="welcome-text">❤️ LA AMOOO MI PRINCESA HERMOSA...❤️</div>
+  </div>
+
+  <div id="main-content">
+
+    <h1>Mi Princesa Hermosa</h1>
+
+    <div id="carousel">
+      <img src="1.jpeg" alt="Imagen 1" />
+      <img src="2.jpeg" alt="Imagen 2" />
+      <img src="3.jpeg" alt="Imagen 3" />
+      <img src="4.jpeg" alt="Imagen 4" />
+      <img src="5.jpeg" alt="Imagen 5" />
+      <img src="6.jpeg" alt="Imagen 6" />
+      <!-- Puedes agregar más imágenes aquí -->
+      <img src="7.jpeg" alt="Imagen 7" />
+      <img src="8.jpeg" alt="Imagen 8" />
+    </div>
+
+    <div class="welcome-message">
+      <h2>❤️ Bienvenida Mi Amor ❤️</h2>
+      <p>Esta página fue creado desde lo mas profundo de mi corazon mi amor😍❤️😻 </p>
+      <p>¡Disfruta este regalo de mi corazón!😻😻😻❤️❤️❤️</p>
+    </div>
+
+    <div id="countdown" class="hero">
+      <h2>Tiempo juntos desde el 11 de septiembre de 2022:</h2>
+      <p id="countdown-text"></p>
+    </div>
+
+    <div class="btn-container">
+      <button id="btnSorpresa">Sorpresa</button>
+      <button id="btnCarta">Ver Carta</button>
+      <button id="btnVideo">Ver Video</button>
+    </div>
+
+    <div id="sorpresa" class="section">
+      <h2>¡Sorpresa! 💖</h2>
+      <p>Mi amor, esta nota sorpresa es corta, pero escrita desde lo más profundo de mi corazón ❤️.
+Hoy quiero darle las gracias, mi amor, por siempre estar presente en mi vida 😍😍😍😍.
+Gracias por cada palabra, por cada gesto, por cada instante que me demuestra su amor 💖.
+Desde lo más sincero de mi corazón, gracias por hacerme el hombre más feliz del mundo ❤️.
+
+Cada día me siento el más afortunado por tener a la mejor esposa del universo 😍😍😍😍.
+¿Cómo podría olvidar cada momento que hemos compartido?
+Para mí, son recuerdos inigualables que atesoro profundamente 🥹.
+Día con día me siento más feliz de tenerla en mi vida, mi amor 😍😍😍😍.
+
+🎉 ¡SORPRESA! 🎉
+Este mensaje está lleno de amor y sinceridad, desde lo más profundo de mi alma ❤️.
+La amo con toda mi vida, mi amor 😍😍😍😍.
+Nunca olvide que aquí tiene a su esposo, quien cada día quiere ser lo mejor para usted ❤️🥹.
+
+LA AMO INFINITAMENTE, MI AMOR ❤️❤️❤️</p>
+      <img src="7.jpeg" alt="Corazón animado" width="200" />
+    </div>
+
+    <div id="carta" class="section">
+      <h2>Mi Carta de Amor</h2>
+      <p>Mi amor, primero que nada quiero darle las gracias, mi amor, por aceptarme en su vida 😍❤️.
+Gracias por darme la oportunidad de verla, de conocerla, de que sea tan especial conmigo 🥺💕.
+Gracias por darme todo su amor, su tiempo, su vida… y sobre todo, por entregarme su amor entero día con día 😍❤️.
+
+Mi amor, esta carta se la estoy escribiendo desde lo más profundo de mi corazón 🥺💕.
+Gracias por todo este tiempo a su lado, mi amor… para mí ha sido lo más perfecto y feliz de este mundo 😍.
+Muchas gracias por regalarme de su tiempo, mi vida ❤️.
+
+Cada vez que la veo, veo a mi futura esposa 😍.
+Y día con día, respetándonos y manteniendo siempre esa misma chispa de amor como desde el principio 🥺💕.
+No sabe lo feliz que se siente mi corazón al hacerle este detalle tan especial, mi amor 😍❤️.
+
+Gracias, mi amor, por aguantarme, por amarme y por ser lo mejor de mi vida 🥺💕.
+Cada vez me convenzo más de que quiero ser lo mejor para usted, mi amor, de que quiero darle toda mi felicidad, mi amor 😍❤️.
+Su tiempo vale oro para mí, mi amor, y valoro cada cosa que hace por mí 💕.
+
+¿Cómo podría olvidar el día que le pedí que fuera mi novia, mi amor? 😍
+Desde ahí, la vida de Kevin Reconco cambió por completo 😍❤️.
+Porque usted, día con día, fue cambiando mi forma de ver la vida, y me enseñó que el amor verdadero puede con todo 🥺💕
+
+Gracias por hacerme tan feliz, mi amor 😍.
+Recuerdo cada día que la iba a ver, cada sonrisa suya, cada mirada que me llenaba el alma 🥺.
+Dios me premió con la mejor esposa del mundo, mi amor ❤️💕.
+
+¡Cuánto la amo, mi vida! 😍 No sabe cuánto, y mi corazón se llena de felicidad con solo pensar en usted 🥺💕.
+Espero que esta carta le guste mucho, mi amor. La escribí desde lo más profundo de mi corazón ❤️.
+
+Gracias, mi amor, por tomarse el tiempo de leer este pequeño detalle 🥺💕.
+Espero que le encante, mi amor…
+
+¡LA AMOOOO INFINITAMENTE, MI LONGITAS HERMOSA! 😍❤️💕🥺
+
+Att: Su esposo, Kevin Reconco ❤️
+
+.</p>
+      <img src="8.jpeg" alt="Imagen final de la carta" class="carta-img" />
+    </div>
+
+    <div id="video" class="section">
+      <h2>Video para ti</h2>
+      <video width="100%" controls>
+        <source src="video 1.mp4" type="video/mp4" />
+        Tu navegador no soporta el video.
+      </video>
+    </div>
+
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Crear corazones dispersándose
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.textContent = '❤️';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.top = window.innerHeight + 30 + 'px';
+    const xMove = (Math.random() * 200 - 100) + 'px';
+    const yMove = '-' + (Math.random() * 400 + 300) + 'px';
+    heart.style.setProperty('--x', xMove);
+    heart.style.setProperty('--y', yMove);
+    heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+
+    document.body.appendChild(heart);
+
+    heart.addEventListener('animationend', () => {
+      heart.remove();
+    });
+  }
+
+  let heartsInterval;
+
+  window.addEventListener('load', () => {
+    heartsInterval = setInterval(createHeart, 300);
+
+    setTimeout(() => {
+      document.getElementById('welcome-screen').style.display = 'none';
+      clearInterval(heartsInterval);
+      document.getElementById('main-content').style.display = 'block';
+      startCarouselAuto();
+      startCountdown();
+    }, 10000); // 10 segundos para que se vea completo el texto
+  });
+
+  // Carrusel horizontal con scroll automático y suave
+  function startCarouselAuto() {
+    const carousel = document.getElementById('carousel');
+    let scrollAmount = 0;
+    const scrollStep = 1; // más lento y suave
+    const scrollMax = carousel.scrollWidth - carousel.clientWidth;
+
+    function autoScroll() {
+      scrollAmount += scrollStep;
+      if (scrollAmount >= scrollMax) {
+        scrollAmount = 0;
+      }
+      carousel.scrollLeft = scrollAmount;
+    }
+
+    setInterval(autoScroll, 25); // velocidad más lenta
+  }
+
+  // Botones
+  const btnSorpresa = document.getElementById('btnSorpresa');
+  const btnCarta = document.getElementById('btnCarta');
+  const btnVideo = document.getElementById('btnVideo');
+
+  const sorpresa = document.getElementById('sorpresa');
+  const carta = document.getElementById('carta');
+  const video = document.getElementById('video');
+
+  function hideAllSections() {
+    sorpresa.style.display = 'none';
+    carta.style.display = 'none';
+    video.style.display = 'none';
+  }
+
+  btnSorpresa.addEventListener('click', () => {
+    hideAllSections();
+    sorpresa.style.display = 'block';
+  });
+
+  btnCarta.addEventListener('click', () => {
+    hideAllSections();
+    carta.style.display = 'block';
+  });
+
+  btnVideo.addEventListener('click', () => {
+    hideAllSections();
+    video.style.display = 'block';
+  });
+
+  // Countdown
+  function startCountdown() {
+    const countdownText = document.getElementById('countdown-text');
+    const startDate = new Date('2022-09-11T00:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = now - startDate;
+      if (diff < 0) {
+        countdownText.textContent = 'Aún no hemos empezado nuestra historia...';
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownText.textContent = `${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+});
+</script>
+
+</body>
+</html>
